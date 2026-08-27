@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antoine Kassis</title>
+<meta name="description" content="Antoine Kassis — mathematics student at ENS Paris-Saclay (MVA), working in computational topology and geometry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F6F8; --paper-2:#FFFFFF;
+    --ink:#16161D; --muted:#565C68; --line:#E2E4E9;
+    --accent:#23306E; --accent-soft:#5661A0;
+    --serif:"Spectral", Georgia, serif;
+    --sans:"Public Sans", system-ui, -apple-system, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, monospace;
+    --maxw:720px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s ease,color .15s ease;}
+  a:hover{border-color:var(--accent);}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  .nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb, var(--paper) 88%, transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line);}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:18px;}
+  .brand{font-family:var(--serif);font-weight:600;font-size:18px;border:none;color:var(--ink);}
+  .brand:hover{color:var(--accent);}
+  .navlinks{display:flex;gap:20px;font-family:var(--mono);font-size:12.5px;}
+  .navlinks a{color:var(--muted);border:none;text-transform:lowercase;}
+  .navlinks a:hover{color:var(--accent);}
+
+  .hero{padding:76px 0 20px;}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-soft);margin:0 0 20px;}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.6rem,7vw,3.9rem);line-height:1.02;letter-spacing:-.015em;margin:0 0 14px;}
+  .role{font-size:1.12rem;color:var(--muted);margin:0 0 30px;}
+  .role em{font-style:italic;color:var(--ink);}
+  .altname{font-family:var(--mono);font-size:12px;color:var(--muted);margin:-22px 0 30px;}
+
+  .barcode{display:block;width:100%;max-width:340px;height:auto;margin:6px 0 34px;}
+  .divider{display:flex;justify-content:center;margin:64px 0;}
+  .divider svg{width:180px;height:14px;opacity:.55;}
+
+  .lead{font-size:1.14rem;line-height:1.7;margin:0 0 30px;max-width:60ch;}
+  .inline-links{display:flex;flex-wrap:wrap;gap:10px 8px;font-family:var(--mono);font-size:13px;margin-top:8px;}
+  .pill{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--line);border-radius:999px;background:var(--paper-2);color:var(--ink);}
+  .pill:hover{border-color:var(--accent);color:var(--accent);}
+  .pill .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);}
+
+  section{padding:16px 0;}
+  .sec-label{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-soft);margin:0 0 22px;display:flex;align-items:center;gap:12px;}
+  .sec-label::after{content:"";flex:1;height:1px;background:var(--line);}
+  p{margin:0 0 16px;}
+  .muted{color:var(--muted);}
+
+  .interests{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+  .interests li{padding-left:22px;position:relative;}
+  .interests li::before{content:"";position:absolute;left:0;top:.62em;width:12px;height:3px;border-radius:2px;background:var(--accent);}
+
+  .item{border-top:1px solid var(--line);padding:22px 0;}
+  .item:last-child{border-bottom:1px solid var(--line);}
+  .item h3{font-family:var(--serif);font-weight:500;font-size:1.2rem;line-height:1.35;margin:0 0 8px;}
+  .item .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-soft);margin:0 0 10px;}
+  .item p{margin:0 0 12px;color:var(--muted);}
+  .item-links{display:flex;gap:16px;font-family:var(--mono);font-size:12.5px;}
+  .item-links .soon{color:var(--muted);border-bottom:1px dotted var(--line);cursor:default;}
+
+  .cards{display:grid;gap:2px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .card{background:var(--paper-2);padding:22px 22px 20px;}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:1.16rem;margin:0 0 6px;}
+  .card .tag{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-soft);}
+  .card p{margin:10px 0 14px;color:var(--muted);font-size:.98rem;}
+  .card .clink{font-family:var(--mono);font-size:12.5px;}
+
+  .early{border-top:1px solid var(--line);padding-top:20px;}
+  .early h3{font-family:var(--serif);font-weight:500;font-size:1.05rem;margin:0 0 4px;}
+  .early .row{margin-bottom:18px;}
+  .early p{margin:0;color:var(--muted);font-size:.96rem;}
+  .early .lang{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-soft);}
+  .early .repo{display:inline-block;margin-top:7px;font-family:var(--mono);font-size:12px;}
+
+  .tech{display:grid;gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .techrow{background:var(--paper);display:flex;gap:18px;align-items:baseline;padding:13px 0;}
+  .techlabel{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-soft);flex:0 0 92px;}
+  .techval{font-size:.99rem;}
+  @media (max-width:480px){.techrow{flex-direction:column;gap:4px;}}
+
+  .contact-links{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:13px;margin-top:4px;}
+
+  footer{border-top:1px solid var(--line);margin-top:64px;padding:26px 0 46px;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--mono);font-size:12px;color:var(--muted);}
+
+  .reveal{opacity:0;transform:translateY(10px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards;}
+  .reveal.d1{animation-delay:.05s;} .reveal.d2{animation-delay:.13s;}
+  .reveal.d3{animation-delay:.21s;} .reveal.d4{animation-delay:.29s;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none;}html{scroll-behavior:auto;}}
+
+  @media (max-width:560px){
+    body{font-size:16px;}
+    .navlinks{display:none;}
+    .hero{padding:56px 0 12px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Antoine Kassis</a>
+    <div class="navlinks">
+      <a href="#about">about</a>
+      <a href="#writing">writing</a>
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#associations">associations</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+
+  <header class="hero">
+    <p class="eyebrow reveal d1">Computational topology &amp; geometry</p>
+    <h1 class="reveal d1">Antoine Kassis</h1>
+    <p class="role reveal d2">Mathematics student at <em>ENS Paris‑Saclay</em> — MVA programme, 2026–2027</p>
+    <p class="altname reveal d2">also appears as Antoine El Kassis</p>
+
+    <svg class="barcode reveal d2" viewBox="0 0 340 92" role="img" aria-label="A persistence barcode.">
+      <g fill="var(--accent)">
+        <rect x="0"  y="6"  width="300" height="5" rx="2.5"/>
+        <rect x="14" y="22" width="228" height="5" rx="2.5"/>
+        <rect x="8"  y="38" width="170" height="5" rx="2.5" opacity=".82"/>
+        <rect x="30" y="54" width="120" height="5" rx="2.5" opacity=".7"/>
+        <rect x="20" y="70" width="72"  height="5" rx="2.5" opacity=".55"/>
+        <rect x="46" y="86" width="40"  height="5" rx="2.5" opacity=".45"/>
+      </g>
+    </svg>
+
+    <p class="lead reveal d3">
+      I work in computational topology and geometry — persistent homology, curvature
+      measures, and the algebraic structures underneath them. I like the places where
+      abstract algebra and geometry become something you can actually compute.
+    </p>
+
+    <div class="inline-links reveal d4">
+      <a class="pill" href="https://github.com/aelkas"><span class="dot"></span>GitHub</a>
+      <a class="pill" href="#writing"><span class="dot"></span>arXiv</a>
+      <!-- EDIT: confirm the exact local part of your ENS address before publishing -->
+      <a class="pill" href="mailto:antoine.kassis@ens-paris-saclay.fr"><span class="dot"></span>Email</a>
+      <!-- EDIT: upload your CV to pdfs/CV.pdf, then this link works as-is -->
+      <a class="pill" href="pdfs/CV.pdf"><span class="dot"></span>CV (PDF)</a>
+      <a class="pill" href="pdfs/CV-full.pdf"><span class="dot"></span>CV (detailed)</a>
+    </div>
+  </header>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 180 14"><g fill="var(--accent)">
+      <rect x="0" y="4" width="150" height="3" rx="1.5"/>
+      <rect x="8" y="9" width="96" height="3" rx="1.5" opacity=".6"/>
+    </g></svg>
+  </div>
+
+  <section id="about">
+    <p class="sec-label">About</p>
+    <p>
+      I'm joining <strong>ENS Paris‑Saclay</strong> for 2026–2027, enrolled in the
+      <strong>MVA</strong> programme (Mathématiques, Vision, Apprentissage). Before that I
+      completed the M1 of the Mathematics Magistère at Université Paris‑Saclay, following an
+      L3 double degree finished with highest honours (<em>mention très bien</em>).
+    </p>
+    <p class="muted">
+      My interests sit in algebra and geometry and in what happens when you make them
+      computational: topological and homological algebra, differential and integral geometry,
+      representation theory, and computational topology. I read and write mathematics in
+      French, English, and Arabic. Outside it: violin, sport, and puzzles.
+    </p>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 180 14"><g fill="var(--accent)">
+      <rect x="0" y="4" width="150" height="3" rx="1.5"/>
+      <rect x="8" y="9" width="96" height="3" rx="1.5" opacity=".6"/>
+    </g></svg>
+  </div>
+
+  <section id="writing">
+    <p class="sec-label">Writing</p>
+
+    <div class="item">
+      <p class="meta">TER · Inria DataShape &amp; IMO Orsay · 2026</p>
+      <h3>Generalizing the Cohen–Steiner curvature inequalities to arbitrary dimension</h3>
+      <p>
+        Supervised by <strong>Marc Glisse</strong> (Inria DataShape / Institut de
+        Mathématiques d'Orsay), and graded 19/20. Starting from Cohen–Steiner's inequalities
+        for the curvature of curves and surfaces, this work generalizes the curvature bounds
+        to arbitrary dimension, using persistent homology, integral geometry (Crofton,
+        Steiner, and Hadwiger's theorem), and Morse theory for manifolds with boundary. The
+        main theorem bounds differences in Lipschitz–Killing curvatures by integrating the
+        Euler characteristic over hyperplane sections.
+      </p>
+      <!-- EDIT: upload the TER to pdfs/TER.pdf; swap the arXiv line once the preprint is live -->
+      <div class="item-links">
+        <a href="pdfs/TER.pdf">PDF</a>
+        <span class="soon">arXiv — coming soon</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <p class="meta">Co-authored text · IMO Orsay · 2025</p>
+      <h3>Group representation theory: from finite to solvable groups</h3>
+      <p>
+        Written under Yves de Laszlo, tracing representation theory from finite groups through
+        to solvable groups, with complete proofs — including the Lie–Kolchin theorem — and
+        worked illustrative examples.
+      </p>
+      <!-- EDIT: upload to pdfs/representation-theory.pdf, or delete this link -->
+      <div class="item-links">
+        <a href="pdfs/representation-theory.pdf">PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 180 14"><g fill="var(--accent)">
+      <rect x="0" y="4" width="150" height="3" rx="1.5"/>
+      <rect x="8" y="9" width="96" height="3" rx="1.5" opacity=".6"/>
+    </g></svg>
+  </div>
+
+  <section id="experience">
+    <p class="sec-label">Experience</p>
+
+    <div class="item">
+      <p class="meta">TLD (ALVEST Group) · June–July 2025</p>
+      <h3>Data analysis for error codes in electric aircraft tractors</h3>
+      <p>
+        Built a methodology to turn raw error logs into a diagnostic tool, applied to a fleet
+        of electric towbarless tractors operated by a major European airline at
+        Paris–Charles de Gaulle: DBSCAN temporal clustering to isolate error bursts, then two
+        composite scores — a cause/effect axis
+        estimated by fitting a Beta law to normalized in-burst positions, and a
+        recurrent/impulsive axis from the spread of appearance days. A rank-based position
+        metric was introduced to handle timestamp collisions, and validated against
+        hierarchical clustering across seven time scales. Delivered as an interactive Dash
+        interface for maintenance engineers.
+      </p>
+      <!-- Report not linked: contains client and platform data. Ask TLD before publishing. -->
+      <div class="item-links">
+        <span class="soon">Report not public</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <p class="meta">Johnson/Luke · July–August 2024</p>
+      <h3>NLP on customer feedback for a Lebanese bank's mobile app</h3>
+      <p>
+        Lebanon's financial crisis had badly eroded public confidence in banks, and the work
+        was aimed at rebuilding that relationship on the consumer side. I applied NLP and
+        machine learning to customer feedback on the bank's mobile application, structuring
+        the resulting insights inside a graph database to surface the issues driving users
+        away. It was my introduction to graph databases, and to modelling a problem as a
+        network of relations rather than a table of rows — which has shaped how I approach
+        data since.
+      </p>
+    </div>
+
+    <div class="item">
+      <p class="meta">Johnson/Luke · August 2024</p>
+      <h3>UX testing for the Dubai Municipality website</h3>
+      <p>
+        Contributed to testing a revised information architecture, with results indicating a
+        25% improvement in user clarity and efficiency. Practical grounding in user testing
+        methodology and interface evaluation.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 180 14"><g fill="var(--accent)">
+      <rect x="0" y="4" width="150" height="3" rx="1.5"/>
+      <rect x="8" y="9" width="96" height="3" rx="1.5" opacity=".6"/>
+    </g></svg>
+  </div>
+
+  <section id="projects">
+    <p class="sec-label">Projects</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="tag">Independent · from scratch</span>
+        <h3>Shaaer — Arabic Poetry Transformer</h3>
+        <p>
+          A GPT trained from scratch on classical Arabic poetry, following the nanoGPT
+          approach, with a custom grapheme-cluster-aware BPE tokenizer for Arabic. Reaches
+          ~3.01 bits per character — below the bzip2 compression baseline.
+        </p>
+        <!-- EDIT: replace with the real repo name -->
+        <a class="clink" href="https://github.com/aelkas/shaaer">→ repository &amp; samples</a>
+      </div>
+
+      <div class="card">
+        <span class="tag">Guided project · Automatants</span>
+        <h3>GAN for image generation</h3>
+        <p>
+          A generative adversarial network trained to produce images of cats — a study in the
+          instabilities that make GAN training its own kind of problem. Built as a guided
+          practical within the association.
+        </p>
+        <!-- EDIT: replace with the real repo name -->
+        <a class="clink" href="https://github.com/aelkas/gan-cats">→ repository</a>
+      </div>
+
+      <div class="card">
+        <span class="tag">Guided project · Automatants</span>
+        <h3>Alzheimer's detection from brain scans</h3>
+        <p>
+          A convolutional network for classifying brain imaging data, alongside a broader set
+          of image classifiers built to compare architectures. Built as a guided practical
+          within the association.
+        </p>
+        <!-- EDIT: replace with the real repo name -->
+        <a class="clink" href="https://github.com/aelkas/alzheimer-cnn">→ repository</a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 180 14"><g fill="var(--accent)">
+      <rect x="0" y="4" width="150" height="3" rx="1.5"/>
+      <rect x="8" y="9" width="96" height="3" rx="1.5" opacity=".6"/>
+    </g></svg>
+  </div>
+
+  <section id="associations">
+    <p class="sec-label">Associations &amp; seminars</p>
+
+    <div class="item">
+      <p class="meta">Automatants, CentraleSupélec · Nov 2025 – Apr 2026</p>
+      <h3>Student artificial intelligence association</h3>
+      <p>
+        Active member of the association: team brainstorming for AI hackathons and seminars,
+        and designing educational slides for the introductory machine learning sessions. It
+        was here that I got to discuss <strong>geometric deep learning</strong> at length —
+        the thread that ties my interest in geometry to my interest in learning — and where
+        the deep learning projects above were built.
+      </p>
+    </div>
+
+    <div class="item">
+      <p class="meta">Inria DataShape · 2026</p>
+      <h3>Topological data analysis seminars</h3>
+      <p>
+        Attended the DataShape seminars on the recommendation of Nina Otter — the closest
+        thing to a running conversation in the field I want to work in.
+      </p>
+    </div>
+
+    <div class="item">
+      <p class="meta">IHES · 2025</p>
+      <h3>Summer school on percolation</h3>
+      <p>
+        A summer school at the Institut des Hautes Études Scientifiques under
+        <strong>Thomas Hutchcroft</strong>, on percolation and critical phenomena. Outside my
+        main area, and deliberately so — random geometry asks questions about large-scale
+        structure that are worth knowing how to think about.
+      </p>
+    </div>
+
+    <div class="item">
+      <p class="meta">Also attended</p>
+      <h3>Mathematical culture and philosophy</h3>
+      <p>
+        Maths en herbe (IHES, 2025), the Mathematical Culture seminar at the Institut de
+        Mathématiques d'Orsay (2024), and the bi-monthly Philosophy and Mathematics seminars
+        at the École Normale Supérieure PSL (2023–2024).
+      </p>
+    </div>
+  </section>
+
+  <section id="earlier">
+    <p class="sec-label">Earlier work</p>
+    <p class="muted" style="margin-bottom:22px;">Undergraduate projects, kept for the record.</p>
+
+    <div class="early">
+      <div class="row">
+        <span class="lang">C</span>
+        <h3>Quadtree image compression</h3>
+        <p>Binary images as quadtrees, with morphological operations and a compression pass that detects structurally identical subtrees anywhere in the image and shares them — turning the tree into a DAG so a repeated pattern is stored once. Written with a partner.</p>
+        <a class="repo" href="https://github.com/aelkas/Quad-trees">→ Quad-trees</a>
+      </div>
+      <div class="row">
+        <span class="lang">OCaml</span>
+        <h3>Maze generation and solving</h3>
+        <p>A maze model with several generation and solving algorithms, and an animated HTML view to watch them run. Each module split into interface, implementation, and tests. Written with a partner.</p>
+        <a class="repo" href="https://github.com/aelkas/projet-laby">→ projet-laby</a>
+      </div>
+      <div class="row">
+        <span class="lang">Java</span>
+        <h3>Colt Express, digitalized</h3>
+        <p>A full digital implementation of the board game Colt Express, with a graphical interface — rules engine, game state, and the programmed-action turn system.</p>
+        <a class="repo" href="https://github.com/aelkas/colt-express">→ colt-express</a>
+      </div>
+      <div class="row">
+        <span class="lang">Python</span>
+        <h3>Boolean circuits and open graphs</h3>
+        <p>My first large object-oriented codebase: a class hierarchy for directed open graphs, extended into Boolean circuits with adders and matrix operations built on top. The interesting part was making the abstractions hold up as the system grew.</p>
+        <a class="repo" href="https://github.com/aelkas/graphs-and-logic">→ graphs-and-logic</a>
+      </div>
+      <div class="row">
+        <span class="lang">C</span>
+        <h3>Machine arithmetic at the limits</h3>
+        <p>Implementations of Ackermann's function and boundary tests around Euler's number, plus linked-list routines ending in an enumeration of all permutations of n with as few mallocs as possible.</p>
+        <a class="repo" href="https://github.com/aelkas/calculations-and-precision">→ calculations-and-precision</a>
+        &nbsp;<a class="repo" href="https://github.com/aelkas/Linked-list-functions">→ Linked-list-functions</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 180 14"><g fill="var(--accent)">
+      <rect x="0" y="4" width="150" height="3" rx="1.5"/>
+      <rect x="8" y="9" width="96" height="3" rx="1.5" opacity=".6"/>
+    </g></svg>
+  </div>
+
+  <section id="technical">
+    <p class="sec-label">Technical</p>
+    <div class="tech">
+      <div class="techrow">
+        <span class="techlabel">Languages</span>
+        <span class="techval">Python · C · C++ · OCaml · Java</span>
+      </div>
+      <div class="techrow">
+        <span class="techlabel">Databases</span>
+        <span class="techval">PostgreSQL · Neo4j</span>
+      </div>
+      <div class="techrow">
+        <span class="techlabel">Tools</span>
+        <span class="techval">LaTeX · Git</span>
+      </div>
+      <div class="techrow">
+        <span class="techlabel">Spoken</span>
+        <span class="techval">French (fluent) · English (TOEFL iBT 108/120) · Arabic (fluent)</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 180 14"><g fill="var(--accent)">
+      <rect x="0" y="4" width="150" height="3" rx="1.5"/>
+      <rect x="8" y="9" width="96" height="3" rx="1.5" opacity=".6"/>
+    </g></svg>
+  </div>
+
+  <section id="interests">
+    <p class="sec-label">Interests</p>
+    <ul class="interests">
+      <li>Computational topology &amp; persistent homology</li>
+      <li>Topological and homological algebra</li>
+      <li>Differential &amp; integral geometry</li>
+      <li>Representation theory</li>
+      <li>Computational geometry</li>
+      <li>Geometric deep learning</li>
+    </ul>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 180 14"><g fill="var(--accent)">
+      <rect x="0" y="4" width="150" height="3" rx="1.5"/>
+      <rect x="8" y="9" width="96" height="3" rx="1.5" opacity=".6"/>
+    </g></svg>
+  </div>
+
+  <section id="contact">
+    <p class="sec-label">Contact</p>
+    <p class="muted">The quickest way to reach me is by email.</p>
+    <div class="contact-links">
+      <!-- EDIT: confirm the exact local part of your ENS address before publishing -->
+      <a class="pill" href="mailto:antoine.kassis@ens-paris-saclay.fr"><span class="dot"></span>antoine.kassis@ens-paris-saclay.fr</a>
+      <a class="pill" href="mailto:kassis.antoine1@gmail.com"><span class="dot"></span>kassis.antoine1@gmail.com</a>
+      <a class="pill" href="https://github.com/aelkas"><span class="dot"></span>github.com/aelkas</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 — Antoine Kassis</span>
+    <span>Built with plain HTML · hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+</body>
+</html>
