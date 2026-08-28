@@ -41,6 +41,10 @@
   .role em{font-style:italic;color:var(--ink);}
   .altname{font-family:var(--mono);font-size:12px;color:var(--muted);margin:-22px 0 30px;}
 
+  .hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:34px;}
+  .hero-headings{flex:1;min-width:0;}
+  .portrait{flex:none;width:168px;height:168px;margin-top:30px;border-radius:10px;object-fit:cover;border:1px solid var(--line);background:var(--paper-2);filter:saturate(.92);}
+
   .barcode{display:block;width:100%;max-width:340px;height:auto;margin:6px 0 34px;}
   .divider{display:flex;justify-content:center;margin:64px 0;}
   .divider svg{width:180px;height:14px;opacity:.55;}
@@ -104,6 +108,8 @@
     body{font-size:16px;}
     .navlinks{display:none;}
     .hero{padding:56px 0 12px;}
+    .hero-top{flex-direction:column-reverse;align-items:flex-start;gap:0;}
+    .portrait{width:116px;height:116px;margin:0 0 24px;}
   }
 </style>
 </head>
@@ -126,10 +132,15 @@
 <main class="wrap" id="top">
 
   <header class="hero">
-    <p class="eyebrow reveal d1">Computational topology &amp; geometry</p>
-    <h1 class="reveal d1">Antoine Kassis</h1>
-    <p class="role reveal d2">Mathematics student at <em>ENS Paris‑Saclay</em> — MVA programme, 2026–2027</p>
-    <p class="altname reveal d2">also appears as Antoine El Kassis</p>
+    <div class="hero-top">
+      <div class="hero-headings">
+        <p class="eyebrow reveal d1">Computational topology &amp; geometry</p>
+        <h1 class="reveal d1">Antoine Kassis</h1>
+        <p class="role reveal d2">Mathematics student at <em>ENS Paris‑Saclay</em> — MVA programme, 2026–2027</p>
+        <p class="altname reveal d2">also appears as Antoine El Kassis</p>
+      </div>
+      <img class="portrait reveal d2" src="photo.jpg" alt="Antoine Kassis" width="168" height="168" loading="eager" decoding="async">
+    </div>
 
     <svg class="barcode reveal d2" viewBox="0 0 340 92" role="img" aria-label="A persistence barcode.">
       <g fill="var(--accent)">
