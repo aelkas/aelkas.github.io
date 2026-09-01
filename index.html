@@ -45,19 +45,28 @@
   /* Banner hero: campus photo behind, circular portrait in front */
   .banner{
     position:relative;
-    min-height:300px;
-    padding:52px 24px 44px;
+    overflow:hidden;
+    min-height:clamp(400px,64vh,620px);
+    padding:56px 24px 76px;
     display:grid;
     place-items:center;
     text-align:center;
     color:#fff;
+    background:var(--paper);
+  }
+  /* the photo lives in its own layer so it can be masked and moved independently of the text */
+  .banner-bg{
+    position:absolute;inset:0;
     background-color:#1A2145;
     background-image:url("ens-saclay.jpg"),linear-gradient(160deg,#232C57 0%,#151A32 100%);
     background-size:cover;
-    background-position:center 48%;
+    background-position:center 42%;
     background-repeat:no-repeat;
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 58%,rgba(0,0,0,.55) 82%,rgba(0,0,0,0) 100%);
+            mask-image:linear-gradient(180deg,#000 0%,#000 58%,rgba(0,0,0,.55) 82%,rgba(0,0,0,0) 100%);
+    will-change:transform,opacity;
   }
-  .banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,32,.40) 0%,rgba(10,14,32,.62) 55%,rgba(10,14,32,.80) 100%);}
+  .banner-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,32,.44) 0%,rgba(10,14,32,.62) 52%,rgba(10,14,32,.74) 100%);}
   .banner-inner{position:relative;z-index:1;max-width:var(--maxw);}
   .avatar{
     display:block;margin:0 auto 20px;
@@ -138,7 +147,7 @@
     .navlinks::-webkit-scrollbar{display:none;}
     .navlinks a{white-space:nowrap;}
     .hero{padding:34px 0 12px;}
-    .banner{min-height:0;padding:40px 20px 34px;}
+    .banner{min-height:clamp(360px,58vh,480px);padding:44px 20px 60px;}
     .avatar{width:104px;height:104px;margin-bottom:16px;}
   }
 </style>
@@ -146,6 +155,7 @@
 <body>
 
 <header class="banner" id="top">
+  <div class="banner-bg" aria-hidden="true"></div>
   <div class="banner-inner">
     <img class="avatar" src="photo.jpg" alt="Antoine Kassis" width="136" height="136" loading="eager" decoding="async">
     <p class="eyebrow">Computational topology &amp; geometry</p>
@@ -531,6 +541,29 @@
     <span>Built with plain HTML · hosted on GitHub Pages</span>
   </div>
 </footer>
+
+<script>
+(function(){
+  var bg = document.querySelector('.banner-bg');
+  var inner = document.querySelector('.banner-inner');
+  if(!bg || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ticking = false;
+  function frame(){
+    var y = window.scrollY || 0;
+    var h = document.querySelector('.banner').offsetHeight || 1;
+    var t = Math.min(y / h, 1);
+    bg.style.transform = 'translate3d(0,' + (y * 0.30) + 'px,0) scale(' + (1 + t * 0.04) + ')';
+    bg.style.opacity = String(1 - t * 0.85);
+    inner.style.transform = 'translate3d(0,' + (y * 0.12) + 'px,0)';
+    inner.style.opacity = String(1 - t * 1.1);
+    ticking = false;
+  }
+  addEventListener('scroll', function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(frame); }
+  }, {passive:true});
+  frame();
+})();
+</script>
 
 </body>
 </html>
