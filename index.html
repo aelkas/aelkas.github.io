@@ -28,22 +28,49 @@
 
   .nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb, var(--paper) 88%, transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line);}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:18px;}
-  .brand{font-family:var(--serif);font-weight:600;font-size:18px;border:none;color:var(--ink);}
+  .brand{font-family:var(--mono);font-weight:500;font-size:14px;letter-spacing:.14em;border:none;color:var(--ink);flex:none;}
+  .brand span{color:var(--accent-soft);}
   .brand:hover{color:var(--accent);}
   .navlinks{display:flex;gap:20px;font-family:var(--mono);font-size:12.5px;}
   .navlinks a{color:var(--muted);border:none;text-transform:lowercase;}
   .navlinks a:hover{color:var(--accent);}
 
-  .hero{padding:76px 0 20px;}
+  .hero{padding:44px 0 20px;}
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-soft);margin:0 0 20px;}
   h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.6rem,7vw,3.9rem);line-height:1.02;letter-spacing:-.015em;margin:0 0 14px;}
   .role{font-size:1.12rem;color:var(--muted);margin:0 0 30px;}
   .role em{font-style:italic;color:var(--ink);}
   .altname{font-family:var(--mono);font-size:12px;color:var(--muted);margin:-22px 0 30px;}
 
-  .hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:34px;}
-  .hero-headings{flex:1;min-width:0;}
-  .portrait{flex:none;width:168px;height:168px;margin-top:30px;border-radius:10px;object-fit:cover;border:1px solid var(--line);background:var(--paper-2);filter:saturate(.92);}
+  /* Banner hero: campus photo behind, circular portrait in front */
+  .banner{
+    position:relative;
+    min-height:300px;
+    padding:52px 24px 44px;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    color:#fff;
+    background-color:#1A2145;
+    background-image:url("ens-saclay.jpg"),linear-gradient(160deg,#232C57 0%,#151A32 100%);
+    background-size:cover;
+    background-position:center 48%;
+    background-repeat:no-repeat;
+  }
+  .banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,32,.40) 0%,rgba(10,14,32,.62) 55%,rgba(10,14,32,.80) 100%);}
+  .banner-inner{position:relative;z-index:1;max-width:var(--maxw);}
+  .avatar{
+    display:block;margin:0 auto 20px;
+    width:136px;height:136px;border-radius:50%;object-fit:cover;
+    border:3px solid rgba(255,255,255,.88);
+    box-shadow:0 12px 32px rgba(0,0,0,.38);
+  }
+  .banner .eyebrow{color:rgba(255,255,255,.74);margin:0 0 12px;}
+  .banner h1{color:#fff;margin:0 0 12px;font-size:clamp(2.3rem,6vw,3.4rem);}
+  .banner .role{color:rgba(255,255,255,.88);margin:0 0 8px;}
+  .banner .role em{color:#fff;}
+  .banner .altname{color:rgba(255,255,255,.58);margin:0;}
+  .credit{position:absolute;right:10px;bottom:7px;z-index:1;font-family:var(--mono);font-size:9.5px;color:rgba(255,255,255,.45);}
 
   .barcode{display:block;width:100%;max-width:340px;height:auto;margin:6px 0 34px;}
   .divider{display:flex;justify-content:center;margin:64px 0;}
@@ -106,18 +133,32 @@
 
   @media (max-width:560px){
     body{font-size:16px;}
-    .navlinks{display:none;}
-    .hero{padding:56px 0 12px;}
-    .hero-top{flex-direction:column-reverse;align-items:flex-start;gap:0;}
-    .portrait{width:116px;height:116px;margin:0 0 24px;}
+    .nav .wrap{height:52px;padding:0 20px;gap:14px;}
+    .navlinks{gap:16px;font-size:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks a{white-space:nowrap;}
+    .hero{padding:34px 0 12px;}
+    .banner{min-height:0;padding:40px 20px 34px;}
+    .avatar{width:104px;height:104px;margin-bottom:16px;}
   }
 </style>
 </head>
 <body>
 
+<header class="banner" id="top">
+  <div class="banner-inner">
+    <img class="avatar" src="photo.jpg" alt="Antoine Kassis" width="136" height="136" loading="eager" decoding="async">
+    <p class="eyebrow">Computational topology &amp; geometry</p>
+    <h1>Antoine Kassis</h1>
+    <p class="role">Mathematics student at <em>ENS Paris&#8209;Saclay</em> — MVA programme, 2026–2027</p>
+    <p class="altname">also appears as Antoine El Kassis</p>
+  </div>
+  <span class="credit">ENS Paris-Saclay</span>
+</header>
+
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="#top">Antoine Kassis</a>
+    <a class="brand" href="#top" aria-label="Antoine Kassis — back to top">A<span>.</span>K<span>.</span></a>
     <div class="navlinks">
       <a href="#about">about</a>
       <a href="#writing">writing</a>
@@ -129,20 +170,10 @@
   </div>
 </nav>
 
-<main class="wrap" id="top">
+<main class="wrap">
 
   <header class="hero">
-    <div class="hero-top">
-      <div class="hero-headings">
-        <p class="eyebrow reveal d1">Computational topology &amp; geometry</p>
-        <h1 class="reveal d1">Antoine Kassis</h1>
-        <p class="role reveal d2">Mathematics student at <em>ENS Paris‑Saclay</em> — MVA programme, 2026–2027</p>
-        <p class="altname reveal d2">also appears as Antoine El Kassis</p>
-      </div>
-      <img class="portrait reveal d2" src="photo.jpg" alt="Antoine Kassis" width="168" height="168" loading="eager" decoding="async">
-    </div>
-
-    <svg class="barcode reveal d2" viewBox="0 0 340 92" role="img" aria-label="A persistence barcode.">
+    <svg class="barcode reveal d1" viewBox="0 0 340 92" role="img" aria-label="A persistence barcode.">
       <g fill="var(--accent)">
         <rect x="0"  y="6"  width="300" height="5" rx="2.5"/>
         <rect x="14" y="22" width="228" height="5" rx="2.5"/>
