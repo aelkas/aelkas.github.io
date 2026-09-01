@@ -143,9 +143,14 @@
   @media (max-width:560px){
     body{font-size:16px;}
     .nav .wrap{height:52px;padding:0 20px;gap:14px;}
-    .navlinks{gap:16px;font-size:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+    .navlinks{
+      gap:16px;font-size:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+      scroll-snap-type:x proximity;padding-right:8px;
+      -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 86%,rgba(0,0,0,0) 100%);
+              mask-image:linear-gradient(90deg,#000 0%,#000 86%,rgba(0,0,0,0) 100%);
+    }
     .navlinks::-webkit-scrollbar{display:none;}
-    .navlinks a{white-space:nowrap;}
+    .navlinks a{white-space:nowrap;scroll-snap-align:start;}
     .hero{padding:34px 0 12px;}
     .banner{min-height:clamp(360px,58vh,480px);padding:44px 20px 60px;}
     .avatar{width:104px;height:104px;margin-bottom:16px;}
