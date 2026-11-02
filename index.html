@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Antoine Kassis</title>
-<meta name="description" content="Antoine Kassis — mathematics student at ENS Paris-Saclay (MVA), working in computational topology and geometry.">
+<meta name="description" content="Antoine Kassis, mathematician at ENS Paris-Saclay (MVA) working on geometry and machine learning.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -109,6 +109,13 @@
   .item-links{display:flex;gap:16px;font-family:var(--mono);font-size:12.5px;}
   .item-links .soon{color:var(--muted);border-bottom:1px dotted var(--line);cursor:default;}
 
+  /* institution photo or logo beside an entry; the initials show until img/<name>.jpg exists */
+  .org{display:grid;grid-template-columns:60px 1fr;gap:18px;align-items:start;}
+  .logo{position:relative;display:grid;place-items:center;width:60px;height:60px;border-radius:12px;border:1px solid var(--line);background:var(--paper-2);overflow:hidden;font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--accent-soft);}
+  .logo:hover{border-color:var(--accent);}
+  .logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#fff;}
+  @media (max-width:480px){.org{grid-template-columns:46px 1fr;gap:14px;}.logo{width:46px;height:46px;font-size:10px;letter-spacing:0;}}
+
   .cards{display:grid;gap:2px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
   .card{background:var(--paper-2);padding:22px 22px 20px;}
   .card h3{font-family:var(--serif);font-weight:500;font-size:1.16rem;margin:0 0 6px;}
@@ -163,9 +170,9 @@
   <div class="banner-bg" aria-hidden="true"></div>
   <div class="banner-inner">
     <img class="avatar" src="photo.jpg" alt="Antoine Kassis" width="136" height="136" loading="eager" decoding="async">
-    <p class="eyebrow">Computational topology &amp; geometry</p>
+    <p class="eyebrow">Geometry &amp; machine learning</p>
     <h1>Antoine Kassis</h1>
-    <p class="role">Mathematics student at <em>ENS Paris&#8209;Saclay</em> — MVA programme, 2026–2027</p>
+    <p class="role">Mathematics and AI at <em>ENS Paris&#8209;Saclay</em>, MVA programme 2026–2027</p>
     <p class="altname">also appears as Antoine El Kassis</p>
   </div>
   <span class="credit">ENS Paris-Saclay</span>
@@ -176,7 +183,7 @@
     <a class="brand" href="#top" aria-label="Antoine Kassis — back to top">A<span>.</span>K<span>.</span></a>
     <div class="navlinks">
       <a href="#about">about</a>
-      <a href="#writing">writing</a>
+      <a href="#research">research</a>
       <a href="#experience">experience</a>
       <a href="#projects">projects</a>
       <a href="#associations">associations</a>
@@ -188,7 +195,7 @@
 <main class="wrap">
 
   <header class="hero">
-    <svg class="barcode reveal d1" viewBox="0 0 340 92" role="img" aria-label="A persistence barcode.">
+    <svg class="barcode reveal d1" viewBox="0 0 340 92" aria-hidden="true">
       <g fill="var(--accent)">
         <rect x="0"  y="6"  width="300" height="5" rx="2.5"/>
         <rect x="14" y="22" width="228" height="5" rx="2.5"/>
@@ -200,17 +207,17 @@
     </svg>
 
     <p class="lead reveal d3">
-      I work in computational topology and geometry — persistent homology, curvature
-      measures, and the algebraic structures underneath them. I like the places where
-      abstract algebra and geometry become something you can actually compute.
+      I'm a mathematician working in machine learning. My training is in differential and
+      algebraic geometry and topology, and I'm drawn to models where that structure does
+      real work: learning on surfaces and meshes, where the Laplacian and its eigenfunctions
+      become layers of a network, and generative models that respect the geometry of their data.
     </p>
 
     <div class="inline-links reveal d4">
       <a class="pill" href="https://github.com/aelkas"><span class="dot"></span>GitHub</a>
-      <a class="pill" href="#writing"><span class="dot"></span>arXiv</a>
+      <a class="pill" href="https://www.linkedin.com/in/antoine-kassis-05014b303"><span class="dot"></span>LinkedIn</a>
       <a class="pill" href="mailto:antoine.kassis@ens-paris-saclay.fr"><span class="dot"></span>Email</a>
-      <a class="pill" href="CV_Antoine_Kassis_onepage.pdf"><span class="dot"></span>CV (PDF)</a>
-      <a class="pill" href="CV_Antoine_Kassis_full.pdf"><span class="dot"></span>CV (detailed)</a>
+      <a class="pill" href="CV_Antoine_Kassis.pdf"><span class="dot"></span>CV (PDF)</a>
     </div>
   </header>
 
@@ -224,16 +231,19 @@
   <section id="about">
     <p class="sec-label">About</p>
     <p>
-      I'm joining <strong>ENS Paris‑Saclay</strong> for 2026–2027, enrolled in the
-      <strong>MVA</strong> programme (Mathématiques, Vision, Apprentissage). Before that I
-      completed the M1 of the Mathematics Magistère at Université Paris‑Saclay, following an
-      L3 double degree finished with highest honours (<em>mention très bien</em>).
+      I'm at <strong>ENS Paris‑Saclay</strong> for 2026–2027 in the <strong>MVA</strong>
+      programme (Mathématiques, Vision, Apprentissage), where my courses include geometry
+      processing and geometric deep learning, optimal transport, diffusion models and shape
+      spaces. Before that I completed the M1 of the Mathematics Magistère at Université
+      Paris‑Saclay, after an L3 double degree finished with highest honours
+      (<em>mention très bien</em>).
     </p>
     <p class="muted">
-      My interests sit in algebra and geometry and in what happens when you make them
-      computational: topological and homological algebra, differential and integral geometry,
-      representation theory, and computational topology. I read and write mathematics in
-      French, English, and Arabic. Outside it: violin, sport, and puzzles.
+      My first research was in computational topology, on persistent homology and curvature.
+      The geometry now comes with learning attached: this term I implemented DiffusionNet to
+      segment RNA surfaces, and I'm working on PoissonNet, a newer architecture for learning
+      on triangle meshes. I read and write mathematics in French, English and Arabic. Away
+      from it I play the violin, train calisthenics and swim.
     </p>
   </section>
 
@@ -244,11 +254,13 @@
     </g></svg>
   </div>
 
-  <section id="writing">
-    <p class="sec-label">Writing</p>
+  <section id="research">
+    <p class="sec-label">Research</p>
 
-    <div class="item">
-      <p class="meta">TER · Inria DataShape &amp; IMO Orsay · 2026</p>
+    <div class="item org">
+      <a class="logo" href="https://team.inria.fr/datashape/" aria-label="Inria DataShape website"><img src="img/inria.jpg" alt="" onerror="this.remove()">Inria</a>
+      <div>
+      <p class="meta">Research internship (TER) · <a href="https://team.inria.fr/datashape/">Inria DataShape</a> &amp; <a href="https://www.imo.universite-paris-saclay.fr/">IMO Orsay</a> · Apr–Jun 2026</p>
       <h3>Generalizing the Cohen–Steiner curvature inequalities to arbitrary dimension</h3>
       <p>
         Supervised by <strong>Marc Glisse</strong> (Inria DataShape / Institut de
@@ -261,12 +273,14 @@
       </p>
       <div class="item-links">
         <a href="main.pdf">PDF</a>
-        <span class="soon">arXiv — coming soon</span>
+      </div>
       </div>
     </div>
 
-    <div class="item">
-      <p class="meta">Co-authored text · IMO Orsay · 2025</p>
+    <div class="item org">
+      <a class="logo" href="https://www.imo.universite-paris-saclay.fr/" aria-label="Institut de Mathématiques d'Orsay website"><img src="img/imo.jpg" alt="" onerror="this.remove()">IMO</a>
+      <div>
+      <p class="meta">Research internship · <a href="https://www.imo.universite-paris-saclay.fr/">IMO Orsay</a> · Mar–May 2025</p>
       <h3>Group representation theory: from finite to solvable groups</h3>
       <p>
         Written under Yves de Laszlo, tracing representation theory from finite groups through
@@ -275,6 +289,7 @@
       </p>
       <div class="item-links">
         <a href="representationsTER_L3.pdf">PDF</a>
+      </div>
       </div>
     </div>
   </section>
@@ -289,8 +304,31 @@
   <section id="experience">
     <p class="sec-label">Experience</p>
 
-    <div class="item">
-      <p class="meta">TLD (ALVEST Group) · June–July 2025</p>
+    <div class="item org">
+      <a class="logo" href="https://kite.com.lb/" aria-label="Kite Insurance website"><img src="img/kite.jpg" alt="" onerror="this.remove()">Kite</a>
+      <div>
+      <p class="meta"><a href="https://kite.com.lb/">Kite Insurance</a>, Lebanon · July–September 2026</p>
+      <h3>AI automation and platform development</h3>
+      <p>
+        Kite is an insurance broker in Lebanon. I helped develop 360 Broker, the brokerage
+        platform Kite runs on and now offers to other brokers, which handles policies across
+        all lines, renewals, commissions and Lebanese double-entry accounting. I also built
+        agentic AI workflows (Claude, Grok, and Meta AI on WhatsApp) that automate back-office
+        work such as policy data entry, accounting entries, renewal follow-ups and client
+        messages, and worked on CompareLinqs, Kite's online price comparison for motor and
+        health cover across 11 Lebanese insurers.
+      </p>
+      <div class="item-links">
+        <a href="https://app.360-broker.com/">360 Broker</a>
+        <a href="https://www.comparelinqs.com/">CompareLinqs</a>
+      </div>
+      </div>
+    </div>
+
+    <div class="item org">
+      <a class="logo" href="https://www.tld-group.com/" aria-label="TLD website"><img src="img/tld.jpg" alt="" onerror="this.remove()">TLD</a>
+      <div>
+      <p class="meta"><a href="https://www.tld-group.com/">TLD (ALVEST Group)</a> · June–July 2025</p>
       <h3>Data analysis for error codes in electric aircraft tractors</h3>
       <p>
         Built a methodology to turn raw error logs into a diagnostic tool, applied to a fleet
@@ -307,10 +345,13 @@
       <div class="item-links">
         <span class="soon">Report not public</span>
       </div>
+      </div>
     </div>
 
-    <div class="item">
-      <p class="meta">Johnson/Luke · July–August 2024</p>
+    <div class="item org">
+      <a class="logo" href="https://johnsonluke.com/" aria-label="Johnson/Luke website"><img src="img/johnsonluke.jpg" alt="" onerror="this.remove()">J/L</a>
+      <div>
+      <p class="meta"><a href="https://johnsonluke.com/">Johnson/Luke</a> · July–August 2024</p>
       <h3>NLP on customer feedback for a Lebanese bank's mobile app</h3>
       <p>
         Lebanon's financial crisis had badly eroded public confidence in banks, and the work
@@ -321,16 +362,11 @@
         network of relations rather than a table of rows — which has shaped how I approach
         data since.
       </p>
-    </div>
-
-    <div class="item">
-      <p class="meta">Johnson/Luke · August 2024</p>
-      <h3>UX testing for the Dubai Municipality website</h3>
       <p>
-        Contributed to testing a revised information architecture, with results indicating a
-        25% improvement in user clarity and efficiency. Practical grounding in user testing
-        methodology and interface evaluation.
+        In August I also took part in UX testing for the Dubai Municipality website, where a
+        revised information architecture tested 25% better on user clarity and efficiency.
       </p>
+      </div>
     </div>
   </section>
 
@@ -346,14 +382,30 @@
     <div class="cards">
 
       <div class="card">
+        <span class="tag">MVA coursework · PyTorch</span>
+        <h3>DiffusionNet for RNA surface segmentation</h3>
+        <p>
+          An implementation of DiffusionNet (Sharp et al., 2022) that labels every vertex of an
+          RNA molecule's surface mesh with one of 160 classes. Features spread over the surface
+          by a heat equation whose diffusion time is learned, solved in the basis of the first
+          128 Laplacian eigenvectors. It reaches 82.2% validation accuracy from raw coordinates
+          and 84.6% with heat kernel signature inputs. Without the learned diffusion it falls
+          to 30.1%.
+        </p>
+        <a class="clink" href="https://github.com/aelkas/diffusionnet-rna">→ repository, notebook and weights</a>
+      </div>
+
+      <div class="card">
         <span class="tag">Independent · from scratch</span>
-        <h3>Shaaer — Arabic Poetry Transformer</h3>
+        <h3>Shaaer, an Arabic poetry transformer</h3>
         <p>
           A GPT trained from scratch on classical Arabic poetry, following the nanoGPT
-          approach, with a custom tokenizer for Arabic. Reaches
-          ~3.01 bits per character — below the bzip2 compression baseline.
+          approach, with a grapheme-cluster-aware tokenizer for Arabic. Moving from a
+          2.65M-character corpus to a 162M-character one brought validation loss from 2.68 to
+          2.25 bits per character. The write-up also covers the tokenizer and model-width
+          sweeps, including what they can't conclude.
         </p>
-        <a class="clink" href="https://github.com/aelkas/shaaer_gpt">→ repository &amp; samples</a>
+        <a class="clink" href="https://github.com/aelkas/shaaer_gpt">→ repository and write-up</a>
       </div>
 
       <div class="card">
@@ -378,6 +430,16 @@
         <a class="clink" href="https://github.com/aelkas/alzheimer-cnn">→ repository</a>
       </div>
 
+      <div class="card">
+        <span class="tag">MVA coursework · PyTorch</span>
+        <h3>PointNet for 3D shapes</h3>
+        <p>
+          PointNet with its input and feature transform networks and an orthogonality
+          regularizer, for classification and segmentation of 3D shapes given as point clouds.
+        </p>
+        <span class="clink muted">repository coming soon</span>
+      </div>
+
     </div>
   </section>
 
@@ -391,8 +453,10 @@
   <section id="associations">
     <p class="sec-label">Associations &amp; seminars</p>
 
-    <div class="item">
-      <p class="meta">Automatants, CentraleSupélec · Nov 2025 – Apr 2026</p>
+    <div class="item org">
+      <a class="logo" href="https://automatants.cs-campus.fr/" aria-label="Automatants website"><img src="img/automatants.jpg" alt="" onerror="this.remove()">AU</a>
+      <div>
+      <p class="meta"><a href="https://automatants.cs-campus.fr/">Automatants</a>, CentraleSupélec · Nov 2025 – Apr 2026</p>
       <h3>Student artificial intelligence association</h3>
       <p>
         Active member of the association: team brainstorming for AI hackathons and seminars,
@@ -401,19 +465,25 @@
         the thread that ties my interest in geometry to my interest in learning — and where
         the deep learning projects above were built.
       </p>
+      </div>
     </div>
 
-    <div class="item">
-      <p class="meta">Inria DataShape · 2026</p>
+    <div class="item org">
+      <a class="logo" href="https://team.inria.fr/datashape/" aria-label="Inria DataShape website"><img src="img/inria.jpg" alt="" onerror="this.remove()">Inria</a>
+      <div>
+      <p class="meta"><a href="https://team.inria.fr/datashape/">Inria DataShape</a> · 2026</p>
       <h3>Topological data analysis seminars</h3>
       <p>
-        Attended the DataShape seminars on the recommendation of Nina Otter — the closest
-        thing to a running conversation in the field I want to work in.
+        Attended the DataShape seminars on topological data analysis, on the recommendation
+        of Nina Otter.
       </p>
+      </div>
     </div>
 
-    <div class="item">
-      <p class="meta">IHES · 2025</p>
+    <div class="item org">
+      <a class="logo" href="https://www.ihes.fr/" aria-label="IHES website"><img src="img/ihes.jpg" alt="" onerror="this.remove()">IHES</a>
+      <div>
+      <p class="meta"><a href="https://www.ihes.fr/">IHES</a> · 2025</p>
       <h3>Summer school on percolation</h3>
       <p>
         A summer school at the Institut des Hautes Études Scientifiques under
@@ -421,6 +491,7 @@
         main area, and deliberately so — random geometry asks questions about large-scale
         structure that are worth knowing how to think about.
       </p>
+      </div>
     </div>
 
     <div class="item">
@@ -488,6 +559,10 @@
         <span class="techval">Python · C · C++ · OCaml · Java</span>
       </div>
       <div class="techrow">
+        <span class="techlabel">Machine learning</span>
+        <span class="techval">PyTorch · Claude, Grok and Meta AI for agentic workflows</span>
+      </div>
+      <div class="techrow">
         <span class="techlabel">Databases</span>
         <span class="techval">PostgreSQL · Neo4j</span>
       </div>
@@ -512,12 +587,12 @@
   <section id="interests">
     <p class="sec-label">Interests</p>
     <ul class="interests">
-      <li>Computational topology &amp; persistent homology</li>
-      <li>Topological and homological algebra</li>
-      <li>Differential &amp; integral geometry</li>
-      <li>Representation theory</li>
-      <li>Computational geometry</li>
-      <li>Geometric deep learning</li>
+      <li>Geometric deep learning and learning on surfaces</li>
+      <li>Geometry processing and spectral methods</li>
+      <li>Optimal transport and shape spaces</li>
+      <li>Diffusion and generative models</li>
+      <li>Differential and algebraic geometry, topology</li>
+      <li>Topological data analysis</li>
     </ul>
   </section>
 
